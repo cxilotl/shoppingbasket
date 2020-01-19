@@ -102,3 +102,13 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Webstorm
+.idea/
+.idea/$CACHE_FILE$
+.idea/.gitignore
+.idea/dictionaries
+.idea/misc.xml
+.idea/modules.xml
+.idea/shoppingbasket.iml
+.idea/vcs.xml
