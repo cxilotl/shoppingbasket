@@ -1,3 +1,7 @@
+## QMetric Home Code Assessment
+
+Creation of a UI for a QMetric supermarket shopping basket using React, Sass, CSS Modules.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
