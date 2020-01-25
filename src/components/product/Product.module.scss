@@ -1,0 +1,30 @@
+.product {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  padding: 5px;
+  margin: 0;
+
+  font: inherit;
+  color: #ffffff;
+  background: #f9bb4b;
+  text-align: center;
+
+  border-radius: 10px;
+  //box-shadow: #909090 1px 1px 3px;
+  overflow: hidden;
+
+  .controls {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+
+    > * {
+      flex-grow: 1;
+      padding: 5px 0;
+      font: inherit;
+    }
+  }
+}

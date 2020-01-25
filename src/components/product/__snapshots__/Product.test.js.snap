@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Product Item Snapshot 1`] = `
+<div
+  className="product"
+>
+  <h4>
+    Beans
+  </h4>
+  <div
+    className="controls"
+  >
+    <button
+      name="product-increment-btn"
+      onClick={[MockFunction]}
+      type="button"
+    >
+      +
+    </button>
+    <button
+      name="product-decrement-btn"
+      onClick={[MockFunction]}
+      type="button"
+    >
+      -
+    </button>
+  </div>
+</div>
+`;
