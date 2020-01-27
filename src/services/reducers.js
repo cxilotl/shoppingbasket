@@ -1,16 +1,42 @@
 import { ADD_TO_CART, REMOVE_FROM_CART } from './actionTypes';
+import { isCartEmpty, getProductFromCart } from "./selectors";
 
 const handleAddProductToCart = (state, payload) => {
   if (typeof payload.product !== 'undefined') {
-    if (state.cart && state.cart.length > 0) {
-      return {
-        ...state,
-        cart: [ ...state.cart, payload.product ]
-      };
+    if (!isCartEmpty(state)) {
+      if (getProductFromCart(state, payload.product)) {
+        return {
+          ...state,
+          cart: state.cart.map((productItem) => {
+            if (productItem.name === payload.product) {
+              return {
+                name: productItem.name,
+                quantity: productItem.quantity + 1
+              }
+            } else {
+              return productItem;
+            }
+          })
+        };
+      } else {
+        return {
+          ...state,
+          cart: [
+            ...state.cart,
+            {
+              name: payload.product,
+              quantity: 1
+            }
+          ]
+        };
+      }
     } else {
       return {
         ...state,
-        cart: [ payload.product ]
+        cart: [{
+          name: payload.product,
+          quantity: 1
+        }]
       };
     }
   }
@@ -18,12 +44,32 @@ const handleAddProductToCart = (state, payload) => {
 };
 
 const handleRemoveProductFromCart = (state, payload) => {
-  return {
-    ...state,
-    cart: state.cart.filter((product) => {
-      return product !== payload.product;
-    })
-  };
+  if (typeof payload.product !== 'undefined' && !isCartEmpty(state) && getProductFromCart(state, payload.product)) {
+    const existingProduct = getProductFromCart(state, payload.product);
+    if (existingProduct.quantity > 1) {
+      return {
+        ...state,
+        cart: state.cart.map((productItem) => {
+          if (productItem.name === payload.product) {
+            return {
+              name: productItem.name,
+              quantity: productItem.quantity - 1
+            }
+          } else {
+            return productItem;
+          }
+        })
+      }
+    } else {
+      return {
+        ...state,
+        cart: state.cart.filter((product) => {
+          return product.name !== payload.product;
+        })
+      };
+    }
+  }
+  return state;
 };
 
 const initialState = {

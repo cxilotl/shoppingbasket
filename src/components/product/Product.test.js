@@ -4,12 +4,20 @@ import { render, fireEvent } from '@testing-library/react';
 import Product from './Product';
 
 describe('Product Item', () => {
-  const productName = 'Beans';
+  const productPerUnit = {
+    name: 'Beans',
+    price: 0.5,
+    isPricePerUnit: true,
+    isPricePerKg: false
+  };
 
   it('Snapshot', () => {
     const component = renderer.create(
       <Product
-        name={ productName }
+        name={ productPerUnit.name }
+        price={ productPerUnit.price }
+        isPerUnit={ productPerUnit.isPricePerUnit }
+        isPerKg={ productPerUnit.isPricePerKg }
         addProduct={ jest.fn() }
         removeProduct={ jest.fn() }
       />
@@ -30,25 +38,31 @@ describe('Product Item', () => {
     it('should increment itself to the shopping cart', () => {
       const { getByText } = render (
         <Product
-          name={ productName }
+          name={ productPerUnit.name }
+          price={ productPerUnit.price }
+          isPerUnit={ productPerUnit.isPricePerUnit }
+          isPerKg={ productPerUnit.isPricePerKg }
           addProduct={ handleOnAdd }
           removeProduct={ handleOnRemove }
         />
       );
       fireEvent.click(getByText('+'));
-      expect(handleOnAdd).toHaveBeenCalled();
+      expect(handleOnAdd).toHaveBeenCalledWith('Beans');
     });
 
     it('should decrement itself to the shopping cart', () => {
       const { getByText } = render (
         <Product
-          name={ productName }
+          name={ productPerUnit.name }
+          price={ productPerUnit.price }
+          isPerUnit={ productPerUnit.isPricePerUnit }
+          isPerKg={ productPerUnit.isPricePerKg }
           addProduct={ handleOnAdd }
           removeProduct={ handleOnRemove }
         />
       );
       fireEvent.click(getByText('-'));
-      expect(handleOnRemove).toHaveBeenCalled();
+      expect(handleOnRemove).toHaveBeenCalledWith('Beans');
     });
   });
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cssStyles from "./ProductList.module.scss";
-// import Product from "../product/Product";
 import Product from "../../containers/Product";
 
 const generateProductList = (products) => {
@@ -10,10 +9,15 @@ const generateProductList = (products) => {
     productListContent = (
       <>
         {
-          products.map((name, index) => {
+          products.map((product, index) => {
             return (
-              <li key={ name } className={ cssStyles.productListItem } data-testid={ `${name}-${index}` }>
-                <Product name={ name } />
+              <li key={ product.name } className={ cssStyles.productListItem } data-testid={ `${product.name}-${index}` }>
+                <Product
+                  name={ product.name }
+                  price={ product.price }
+                  isPerUnit={ product.isPricePerUnit }
+                  isPerKg={ product.isPricePerKg }
+                />
               </li>
             );
           })

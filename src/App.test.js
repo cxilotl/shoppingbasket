@@ -1,7 +1,9 @@
 import React from 'react';
+import { createStore } from 'redux'
 import { Provider } from'react-redux';
 import { render, within, fireEvent } from '@testing-library/react';
 import { store as appStore } from './services/store';
+import reducer from './services/reducers';
 import App from './App';
 
 import products from './products';
@@ -21,16 +23,14 @@ describe('Given a shopping page, it', () => {
       const { getByText } = renderApp(appStore);
       const productSectionElement = getByText(/Our Products/i);
       expect(productSectionElement).toBeInTheDocument();
-      // console.log(productSectionElement.outerHTML);
-      // console.log(productSectionElement.parentElement.outerHTML);
     });
 
     test('should render a list of products', () => {
       const { getByTestId } = renderApp(appStore);
       const productListSection = getByTestId('product-list');
       const { getByText } = within(productListSection);
-      products.forEach((name) => {
-        expect(getByText(name)).toBeInTheDocument();
+      products.forEach((product) => {
+        expect(getByText(product.name)).toBeInTheDocument();
       });
     });
   });
@@ -51,11 +51,20 @@ describe('Given a shopping page, it', () => {
     describe('And adding a product three times, it', () => {
 
       test('should render a sub-total of the products added', () => {
-        const { getByTestId } = renderApp(appStore);
+        const store = createStore(reducer, {
+          products: products,
+          cart: [
+            { name: 'Beans', quantity: 3 },
+            { name: 'Coke', quantity: 1 }
+          ]
+        });
+        const { getByTestId } = renderApp(store);
         const cartSubTotalSection = getByTestId('cart-sub-total');
         const { getAllByText } = within(cartSubTotalSection);
         const beans = getAllByText(/Beans/i);
         expect(beans.length).toBe(3);
+        const coke = getAllByText(/Coke/i);
+        expect(coke.length).toBe(1);
       });
 
       test('should render a sub-total of the products added', () => {
@@ -69,11 +78,12 @@ describe('Given a shopping page, it', () => {
         const { getByText } = within(productItem);
         const productItemAddToCart = getByText('+');
         fireEvent.click(productItemAddToCart);
+        fireEvent.click(productItemAddToCart);
 
         const cartSubTotalSection = getByTestId('cart-sub-total');
         const { getAllByText } = within(cartSubTotalSection);
         const beans = getAllByText(/Beans/i);
-        expect(beans.length).toBe(3);
+        expect(beans.length).toBe(2);
       });
     });
   });

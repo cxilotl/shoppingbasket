@@ -4,9 +4,16 @@ exports[`Product Item Snapshot 1`] = `
 <div
   className="product"
 >
-  <h4>
+  <h4
+    className="title"
+  >
     Beans
   </h4>
+  <p
+    className="price"
+  >
+    £0.5
+  </p>
   <div
     className="controls"
   >
