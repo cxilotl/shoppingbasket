@@ -1,30 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cssStyles from './App.module.scss';
-import Product from './components/product/Product';
-
-import products from './products';
-
-const generateProductList = (productList) => {
-  const addItem = () => {
-    console.log('Adding item to cart');
-  };
-  const removeItem = () => {
-    console.log('Removing item from cart');
-  };
-  return (
-    <ul className={ cssStyles.productList }>
-      {
-        productList.map((name) => {
-          return (
-            <li key={ name } className={ cssStyles.productListItem }>
-              <Product name={ name } onIncrementing={ addItem } onDecrementing={ removeItem } />
-            </li>
-          );
-        })
-      }
-    </ul>
-  );
-};
+import ProductList from "./containers/ProductList";
 
 const CartSubTotalItem = ({ id, name, price }) => {
   return (
@@ -32,15 +9,20 @@ const CartSubTotalItem = ({ id, name, price }) => {
   );
 };
 
+CartSubTotalItem.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  price: PropTypes.string
+};
+
 function App() {
-  const productList = generateProductList(products);
   return (
     <>
       <h1 className={ cssStyles.title }>Supermarket shopping</h1>
       <main role="main" className={ cssStyles.main }>
         <section data-testid="product-list" className={ cssStyles.section }>
           <h2 className={ cssStyles.sectionTitle }>Our Products</h2>
-          { productList }
+          <ProductList />
         </section>
         <section data-testid="cart" className={ cssStyles.section }>
           <h2 className={ cssStyles.sectionTitle }>Shopping Cart</h2>
