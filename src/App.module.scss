@@ -15,10 +15,14 @@
   padding: 0 6px;
 
   @include tablet {
+    max-width: 1000px;
+    margin: 0 auto;
     justify-content: space-between;
   }
 
   @include desktop {
+    max-width: 1000px;
+    margin: 0 auto;
     justify-content: space-between;
   }
 
@@ -28,6 +32,8 @@
     width: 100%;
     padding: 8px;
     margin: 0 0 8px;
+    color: #ffffff;
+    background: #000000;
     border-radius: 10px;
     box-shadow: #909090 1px 1px 3px;
     overflow: hidden;
@@ -43,6 +49,7 @@
 
     .sectionTitle {
       margin: 0 0 8px;
+      color: #ec4d37;
       text-decoration: underline;
     }
   }

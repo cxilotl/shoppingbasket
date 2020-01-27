@@ -75,6 +75,13 @@ describe('Selectors', () => {
       expect(getTotalToPay(state)).toEqual(1.7);
     });
 
+    test('Should return the total rounded price for the products in the cart', () => {
+      state.cart=[
+        { name: 'Coke', quantity: 3 }
+      ];
+      expect(getTotalToPay(state)).toEqual(2.1);
+    });
+
     test('Should return a generated list of all the items  with name, price, and quantity from the cart', () => {
       state.cart=[
         { name: 'Beans', quantity: 3 },

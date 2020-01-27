@@ -13,7 +13,6 @@ function App() {
           <ProductList />
         </section>
         <section data-testid="cart" className={ cssStyles.section }>
-          <h2 className={ cssStyles.sectionTitle }>Shopping Cart</h2>
           <Cart />
         </section>
       </main>

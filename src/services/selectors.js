@@ -19,11 +19,12 @@ const getProductFromCart = (state, name) => {
 };
 
 const getTotalToPay = (state) => {
-  return state.cart.reduce((total, productInCart) => {
+  const total = state.cart.reduce((total, productInCart) => {
     const productPricePerUnit = getProduct(state, productInCart.name);
     const totalPriceOfProduct = productPricePerUnit.price * productInCart.quantity;
     return total + totalPriceOfProduct;
   }, 0);
+  return Math.round((total + Number.EPSILON) * 100) / 100;
 };
 
 const getCartItems = (state) => {

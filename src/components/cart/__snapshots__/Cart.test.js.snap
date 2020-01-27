@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Cart Snapshot 1`] = `
-<div>
+<div
+  className="cart"
+>
   <section
     className="subTotal"
     data-testid="cart-sub-total"
@@ -17,7 +19,7 @@ exports[`Cart Snapshot 1`] = `
           Beans
         </span>
         <span>
-          £0.5
+          £0.50
         </span>
       </li>
       <li
@@ -28,7 +30,7 @@ exports[`Cart Snapshot 1`] = `
           Beans
         </span>
         <span>
-          £0.5
+          £0.50
         </span>
       </li>
       <li
@@ -39,7 +41,7 @@ exports[`Cart Snapshot 1`] = `
           Beans
         </span>
         <span>
-          £0.5
+          £0.50
         </span>
       </li>
       <li
@@ -50,7 +52,7 @@ exports[`Cart Snapshot 1`] = `
           Coke
         </span>
         <span>
-          £0.7
+          £0.70
         </span>
       </li>
     </ul>

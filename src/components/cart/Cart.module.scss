@@ -1,15 +1,38 @@
-.subTotal {
+.title {
+  margin: 0 0 8px;
+  color: #53cc09;
+  text-decoration: underline;
+}
 
-  .subTotalList {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+.cart {
+  color: #53cc09;
 
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  .subTotal {
 
-    .subTotalListItem {
+    .subTotalList {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      .subTotalListItem {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+      }
+    }
+
+    .subTotalSeparator {
+      margin-right: 85%;
+      border: 0;
+      border-bottom: 2px dashed #53cc09;
+    }
+
+    .subTotalPrice {
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
@@ -17,28 +40,16 @@
     }
   }
 
-  .subTotalSeparator {
-    margin-right: 85%;
+  .totalSeparator {
     border: 0;
-    border-bottom: 2px dashed #000;
+    border-bottom: 2px dashed #53cc09;
   }
 
-  .subTotalPrice {
+  .total {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
   }
-}
 
-.totalSeparator {
-  border: 0;
-  border-bottom: 2px dashed #000;
-}
-
-.total {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
 }

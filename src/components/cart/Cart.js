@@ -4,7 +4,7 @@ import cssStyles from "./Cart.module.scss";
 
 const CartSubTotalItem = ({ id, name, price }) => {
   return (
-    <li data-id={id} className={ cssStyles.subTotalListItem }><span>{ name }</span><span>{ `£${price}` }</span></li>
+    <li data-id={id} className={ cssStyles.subTotalListItem }><span>{ name }</span><span>{ `£${price.toFixed(2)}` }</span></li>
   );
 };
 
@@ -46,19 +46,22 @@ const generateSubTotalItems = (items) => {
 const Cart = ({ items, subTotal, total }) => {
   const cartItems = generateSubTotalItems(items);
   return (
-    <div>
-      <section data-testid="cart-sub-total" className={ cssStyles.subTotal }>
-        { cartItems }
-        <hr className={ cssStyles.subTotalSeparator } />
-        <p className={ cssStyles.subTotalPrice }>
-          <span>Sub-Total</span><span>{ `£${subTotal}` }</span>
-        </p>
-      </section>
-      <hr className={ cssStyles.totalSeparator } />
-      <div data-testid="cart-total" className={ cssStyles.total }>
-        <span>Total</span><span>{ `£${total}` }</span>
+    <>
+      <h2 className={ cssStyles.title }>Shopping Cart</h2>
+      <div className={ cssStyles.cart }>
+        <section data-testid="cart-sub-total" className={ cssStyles.subTotal }>
+          { cartItems }
+          <hr className={ cssStyles.subTotalSeparator } />
+          <p className={ cssStyles.subTotalPrice }>
+            <span>Sub-Total</span><span>{ `£${subTotal.toFixed(2)}` }</span>
+          </p>
+        </section>
+        <hr className={ cssStyles.totalSeparator } />
+        <div data-testid="cart-total" className={ cssStyles.total }>
+          <span>Total</span><span>{ `£${total.toFixed(2)}` }</span>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
