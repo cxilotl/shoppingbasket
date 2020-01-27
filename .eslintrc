@@ -5,16 +5,20 @@
     "plugin:import/errors",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
+    "plugin:react-redux/recommended",
     "prettier",
     "prettier/react"
   ],
   "plugins": [
     "react",
+    "react-redux",
     "import",
     "jsx-a11y"
   ],
   "rules": {
     "no-plusplus": 0,
+    "no-underscore-dangle": 0,
+    "object-shorthand": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/require-default-props": 0
   },
