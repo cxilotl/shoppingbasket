@@ -10,8 +10,8 @@ describe('Product Item', () => {
     const component = renderer.create(
       <Product
         name={ productName }
-        onIncrementing={ jest.fn() }
-        onDecrementing={ jest.fn() }
+        addProduct={ jest.fn() }
+        removeProduct={ jest.fn() }
       />
     );
     const tree = component.toJSON();
@@ -31,8 +31,8 @@ describe('Product Item', () => {
       const { getByText } = render (
         <Product
           name={ productName }
-          onIncrementing={ handleOnAdd }
-          onDecrementing={ handleOnRemove }
+          addProduct={ handleOnAdd }
+          removeProduct={ handleOnRemove }
         />
       );
       fireEvent.click(getByText('+'));
@@ -43,8 +43,8 @@ describe('Product Item', () => {
       const { getByText } = render (
         <Product
           name={ productName }
-          onIncrementing={ handleOnAdd }
-          onDecrementing={ handleOnRemove }
+          addProduct={ handleOnAdd }
+          removeProduct={ handleOnRemove }
         />
       );
       fireEvent.click(getByText('-'));

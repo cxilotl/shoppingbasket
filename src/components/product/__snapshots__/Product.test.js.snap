@@ -12,14 +12,14 @@ exports[`Product Item Snapshot 1`] = `
   >
     <button
       name="product-increment-btn"
-      onClick={[MockFunction]}
+      onClick={[Function]}
       type="button"
     >
       +
     </button>
     <button
       name="product-decrement-btn"
-      onClick={[MockFunction]}
+      onClick={[Function]}
       type="button"
     >
       -
