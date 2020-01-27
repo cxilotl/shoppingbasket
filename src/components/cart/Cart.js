@@ -21,7 +21,7 @@ const generateSubTotalItems = (items) => {
       <ul className={ cssStyles.subTotalList }>
         {
           items.map((item, index) => {
-            let subTotalItemsPerProduct = [];
+            const subTotalItemsPerProduct = [];
             if (item.quantity > 0) {
               for (let i = 0; i < item.quantity; i++) {
                 subTotalItemsPerProduct.push(

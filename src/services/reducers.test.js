@@ -3,15 +3,6 @@ import { ADD_TO_CART, REMOVE_FROM_CART } from './actionTypes';
 import products from "../products";
 
 describe('Selectors', () => {
-  let initialState;
-
-  beforeEach(() => {
-    initialState = {
-      products: [],
-      cart: []
-    };
-  });
-
   describe('When adding a product to the cart, it', () => {
     test('Should not add an undefined product to an empty cart', () => {
       const state = {

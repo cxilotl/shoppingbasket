@@ -13,32 +13,29 @@ const handleAddProductToCart = (state, payload) => {
                 name: productItem.name,
                 quantity: productItem.quantity + 1
               }
-            } else {
-              return productItem;
             }
+            return productItem;
           })
         };
-      } else {
-        return {
-          ...state,
-          cart: [
-            ...state.cart,
-            {
-              name: payload.product,
-              quantity: 1
-            }
-          ]
-        };
       }
-    } else {
       return {
         ...state,
-        cart: [{
-          name: payload.product,
-          quantity: 1
-        }]
+        cart: [
+          ...state.cart,
+          {
+            name: payload.product,
+            quantity: 1
+          }
+        ]
       };
     }
+    return {
+      ...state,
+      cart: [{
+        name: payload.product,
+        quantity: 1
+      }]
+    };
   }
   return state;
 };
@@ -55,29 +52,24 @@ const handleRemoveProductFromCart = (state, payload) => {
               name: productItem.name,
               quantity: productItem.quantity - 1
             }
-          } else {
-            return productItem;
           }
+          return productItem;
         })
       }
-    } else {
-      return {
-        ...state,
-        cart: state.cart.filter((product) => {
-          return product.name !== payload.product;
-        })
-      };
     }
+    return {
+      ...state,
+      cart: state.cart.filter((product) => {
+        return product.name !== payload.product;
+      })
+    };
   }
   return state;
 };
 
-const initialState = {
-  products: [],
-  cart: []
-};
+// const initialState = { products: [], cart: [] };
 
-const reducer = (state = initialState, action = {}) => {
+const reducer = (state = { products: [], cart: [] }, action = {}) => {
   switch (action.type) {
     case ADD_TO_CART:
       return handleAddProductToCart(state, action.payload);
